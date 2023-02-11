@@ -51,3 +51,8 @@
 - 日志。查看`tail -f ./log/chatgpt.log`
 - 简单测试。`curl 'http://127.0.0.1:9001/test?msg=中国在哪个洲'` 
 - 模式。分两种模式，默认快速回答，但是结果可能不全面。 普通模式，公众号问题中加入`详细`或者`代码`最大化回复，test接口增加`mode=full`参数以调节，例 `curl 'http://127.0.0.1:9001/test?msg=评价一下三体&mode=full'`
+
+这里
+export API_KEY=sk-eK9a0n
+export WX_TOKEN=123***
+
