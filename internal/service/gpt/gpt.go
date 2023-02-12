@@ -92,12 +92,12 @@ func getFromCache(msg string) string {
 
 // https://beta.openai.com/docs/api-reference/making-requests
 func completions(isFast bool, msg string, timeout time.Duration) (string, error) {
-	wordSize := 35 // 中文字符数量
-	temperature := 0.3
+	wordSize := 1024 // 中文字符数量
+	temperature := 0.5
 
 	if !isFast {
-		wordSize = 800
-		temperature = 0.8
+		wordSize = 4000
+		temperature = 0.95
 	}
 
 	// start := time.Now()
@@ -105,13 +105,13 @@ func completions(isFast bool, msg string, timeout time.Duration) (string, error)
 		"model":  "text-davinci-003",
 		"prompt": msg,
 		// 影响回复速度和内容长度。小则快，但内容短，可能是截断的。
-		"max_tokens": wordSize * 3,
+		"max_tokens": wordSize,
 		// 0-1，默认1，越高越有创意
-		"temperature": temperature,
-		// "top_p":             1,
-		// "frequency_penalty": 0,
-		// "presence_penalty":  0,
-		// "stop": "。",
+		"temperature":       temperature,
+		"top_p":             1,
+		"frequency_penalty": 0,
+		"presence_penalty":  0,
+		"stop":              "。",
 	}
 
 	bs, _ := json.Marshal(params)

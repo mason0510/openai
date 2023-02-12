@@ -63,7 +63,7 @@ func ReceiveMsg(w http.ResponseWriter, r *http.Request) {
 			ctx, cancel := context.WithTimeout(context.Background(), timeout)
 			defer cancel()
 
-			isFast := !strings.Contains(msg, "代码") && !strings.Contains(msg, "详细")
+			isFast := !strings.Contains(msg, "代码")
 			result := gpt.Query(isFast, msg, timeout)
 			ch <- result
 
